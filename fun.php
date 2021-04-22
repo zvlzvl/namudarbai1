@@ -53,5 +53,3 @@ echo preg_replace_callback(
             "|(\d{2}/\d{2}/)(\d{4})|",
             "next_year",
             $text);
-
-?>
