@@ -63,12 +63,11 @@ usort($arr, function ($a, $b) {
     return be_liekanu($b) <=> be_liekanu($a);
 });
 
-_d($arr);
+print_r($arr);
 
 foreach ($arr as $key => $value) {
     print_r(be_liekanu($value) . '<br>');
 }
-
 
 
 echo '<br>------------------6-----------------<br>';
@@ -89,26 +88,25 @@ print_r($arr2);
 
 echo '<br>------------------7-----------------<br>';
 
+// $masyvas = [];
+// $depth = rand(10, 30);
+// $masyvas = rek($masyvas, $depth);
 
-$masyvas = [];
-$depth = rand(10, 30);
-$masyvas = rek($masyvas, $depth);
+// function rek($arr, $depth)
+// {
+//     $times = rand(10, 20);
+//     for ($i = 0; $i < $times - 1; $i++) {
+//         $arr[] = rand(0, 10);
+//     }
+//     if ($depth > 0) {
+//         $arr[] = rek([], $depth - 1);
+//     } else {
+//         $arr[] = 0;
+//     }
+//     return $arr;
+// }
 
-function rek($arr, $depth)
-{
-    $times = rand(10, 20);
-    for ($i = 0; $i < $times - 1; $i++) {
-        $arr[] = rand(0, 10);
-    }
-    if ($depth > 0) {
-        $arr[] = rek([], $depth - 1);
-    } else {
-        $arr[] = 0;
-    }
-    return $arr;
-}
-
-print_r($masyvas);
+// print_r($masyvas);
 
 echo '------kitas be rekursijos----------<br>';
 
@@ -139,18 +137,18 @@ echo '<br>------------------8-----------------<br>';
 
 function count1($arg)
 {
-    $count = 0;
+    $sum = 0;
     foreach ($arg as $key => $value) {
         if (!is_array($value)) {
-            $count += $value;
+            $sum += $value;
         } else {
-            $count += count1($value);
+            $sum += count1($value);
         }
     }
-    return $count;
-};
+    return $sum;
+}
+print_r(count1($bigArray));
 
-echo count1($masyvas);
 
 echo '<br>------------------9-----------------<br>';
 
@@ -171,6 +169,8 @@ function add($arg)
 
 print_r(add(3));
 
+    
+
 echo '<br>------------------10-----------------<br>';
 $arr10 = [];
 for ($i = 0; $i < 10; $i++) {
@@ -180,18 +180,6 @@ for ($i = 0; $i < 10; $i++) {
 }
 print_r($arr10);
 
-function get_smalest($arg)
-{
-    $smalest = 100;
-    foreach ($arg as $key => $value) {
-        foreach ($value as $k => $v) {
-            if ($v < $smalest) {
-                $smalest = $v;
-            }
-        }
-    }
-    return $smalest;
-}
 
 function get_average($arg)
 {
@@ -210,15 +198,30 @@ function get_average($arg)
     return $av;
 }
 
-// function more_70($arg){
-//      if (get_average($arg) >= 70){
-//          return $arg;
-//      } else {
-//         $small = get_smalest($arg);
-//         $key = array_search($small, $arg);
-//         // $arg[$key]= $small;
-//         return more_70($arg);
-//      } 
-// }
+echo '----avg---';
+print_r(get_average($arr10));
 
-// print_r(more_70($arr10));
+
+function more_70($arg){
+    $av = get_average($arg);
+     if ($av >= 70){
+         return $arg;
+     } else {
+        $smalest = 100;
+        $k1 = null;
+        $k2 = null;
+        foreach ($arg as $key => $value) {
+            foreach ($value as $k => $v) {
+            if ($v < $smalest) {
+                $smalest = $v;
+                    $k1 = $key;
+                    $k2 = $k;
+            }
+        }
+    }
+    $arg[$k1][$k2] +=3;
+    return more_70($arg);
+}
+}
+
+ print_r(more_70($arr10));
