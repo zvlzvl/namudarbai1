@@ -14,7 +14,7 @@ if(!isset($_GET['color'])){
 else {
     ?> 
     <body style="background-color: <?=$_GET['color']?>">
-    <a href="http://localhost/bebras/web3.php">web3</a>
+    <a href="http://localhost/namudarbai/web_mechanika/3.php/web3.php">web3</a>
     </body>
     <?php
 } 

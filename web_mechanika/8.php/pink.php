@@ -6,7 +6,7 @@
 </body>
 <?php
 
-if(!isset($_POST=1)) {
-    header('Location: http://localhost/bebras/rose.php');
-  
+if(!isset($_POST)) {
+    header('Location: http://localhost/namudarbai/web_mechanika/8.php/rose.php');
+
 }
