@@ -198,8 +198,8 @@ function get_average($arg)
     return $av;
 }
 
-echo '----avg---';
-print_r(get_average($arr10));
+// echo '----avg---';
+// print_r(get_average($arr10));
 
 
 function more_70($arg){
