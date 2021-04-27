@@ -1,26 +1,22 @@
-
 <?php
+$bgColor = !isset($_GET['color']) || 1 == $_GET['color'] ? 'black' : 'red';
 
-if(!isset($_GET['color'])){
-    ?> 
-    <body style="background-color: black">
-    <a href="http://localhost/namudarbai/web_mechanika/1.php/web1.php">web1</a>
-    <a href="http://localhost/namudarbai/web_mechanika/1.php/web1.php?color=1" action="" method="get">web1/color</a>
-    </body>
-    <?php
-}
-elseif ($_GET['color'] == '1') {
-    ?> 
-    <body style="background-color: red">
-    <a href="http://localhost/namudarbai/web_mechanika/1.php/web1.php">web1</a>
-    <a href="http://localhost/namudarbai/web_mechanika/1.php/web1.php?color=1" action="" method="get">web1/color</a>
-    </body>
-    <?php
-} else {
-    ?> 
-    <body style="background-color: black">
-    <a href="http://localhost/namudarbai/web_mechanika/1.php/web1.php">web1</a>
-    <a href="http://localhost/namudarbai/web_mechanika/1.php/web1.php?color=1" action="" method="get">web1/color</a>
-    </body>
-    <?php
-}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web1</title>
+</head>
+<body style="background-color:<?=$bgColor ?>;">
+<a style="color: white" href="?color=1">black</a>
+<a style="color: white" href="?color=2" action="" method="get">red</a>
+</body>
+</html>
+
+
+
+
