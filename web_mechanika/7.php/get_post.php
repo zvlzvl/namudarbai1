@@ -1,13 +1,13 @@
-
-
 <?php
-
-if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
-    $color ='yellow';
-} 
-else { 
+if (!empty($_POST)){
+    header('Location: http://localhost/namudarbai/web_mechanika/6.php/mygtukai.php?button=post');
+    exit;
+}
+if (!empty($_GET) && !isset($_GET['from'])) {
     $color = 'green';
-} 
+} else {
+    $color = 'yellow';
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,14 +20,12 @@ else {
 </head>
 <body style="background-color: <?=$color?>;">
     <form action="" method="get">
-        <button type="submit" value="GET">GET</button>
+        <button type="submit">GET</button>
     </form>
 
     <form action="" method="post">
-        <button type="submit" value="POST">POST</button>
+        <button type="submit">POST</button>
     </form>
 </body>
 </html>
-
-
 
