@@ -1,7 +1,7 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     header('Location: http://localhost/namudarbai/web_mechanika/8.php/pink.php');
-    exit;
+    die;
 }
 ?>
 <!DOCTYPE html>
