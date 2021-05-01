@@ -18,7 +18,7 @@
                 <button class="menu-button"><a href="http://localhost/namudarbai/bank/index.php">Į pradžią</a></button>
                 <button class="menu-button"><a href="http://localhost/namudarbai/bank/authorized.php">Duomenys</a></button>
                 <button class="menu-button"><a href="http://localhost/namudarbai/bank/login.php">Prisijungti</a></button>
-                <!-- <button class="menu-button"><a href="http://localhost/namudarbai/bank.php?logout">Atsijungti</a></button> -->
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank.php?logout">Atsijungti</a></button>
             </nav>
         </div>
         <section class="inner-box">
