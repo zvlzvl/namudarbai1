@@ -2,13 +2,16 @@
 require __DIR__.'/bootstrap.php';
 
 // scenarijus ISloginti
+
 if (isset($_GET['logout'])) {
     $_SESSION['message'] = 'Jūs atsijungėte';
     $_SESSION['msg_type'] = 'ok';
-    unset($_SESSION['name'], $_SESSION['logged']);
+    $_SESSION['logged'] = 0;
+    unset($_SESSION['name']);
     header('Location: http://localhost/namudarbai/bank/login.php');
     die;
-}
+} 
+
 
 
 

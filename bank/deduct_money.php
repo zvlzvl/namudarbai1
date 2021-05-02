@@ -17,10 +17,9 @@ require __DIR__.'/bootstrap.php';
     <div class="wraper">
         <div class="navbar">
             <nav>
-                <button class="menu-button"><a href="./index.php">Į pradžią</a></button>
+                <button class="menu-button"><a href="./authorized.php">Į pradžia</a></button>
                 <button class="menu-button"><a href="./account_list.php">Sąskaitų sąrašas</a></button>
                 <button class="menu-button"><a href="./new_account.php">Nauja sąskaita</a></button>
-                <button class="menu-button"><a href="./add_money.php">Pridėti lėšas</a></button>
                 <button class="menu-button"><a href="./login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>

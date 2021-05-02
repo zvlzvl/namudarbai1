@@ -23,8 +23,6 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== 1) {
                 <button class="menu-button"><a href="./index.php">Į pradžią</a></button>
                 <button class="menu-button"><a href="./account_list.php">Sąskaitų sąrašas</a></button>
                 <button class="menu-button"><a href="./new_account.php">Nauja sąskaita</a></button>
-                <button class="menu-button"><a href="./add_money.php">Pridėti lėšas</a></button>
-                <button class="menu-button"><a href="./deduct_money.php">Nuskaičiuoti lėšas</a></button>
                 <button class="menu-button"><a href="./login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>

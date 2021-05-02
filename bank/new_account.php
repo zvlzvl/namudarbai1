@@ -1,5 +1,14 @@
 <?php
-require __DIR__.'/bootstrap.php';
+session_start();
+$clients = json_decode(file_get_contents(__DIR__.'/clients.json'));
+$msg = '';
+if (isset($_SESSION['message'])) {
+    $msg = $_SESSION['message'];
+    $msgType = $_SESSION['msg_type'] == 'ok' ? 'success' : 'danger';
+    unset($_SESSION['message'], $_SESSION['msg_type']);
+}
+
+//generate random account number not existing
 function randomAccount(){
     $bankNumber = "LT1212345";
     $randomNumber = null;
@@ -8,46 +17,57 @@ function randomAccount(){
     }
     $accountNumber = $bankNumber.$randomNumber;
     return $accountNumber;
-    // $data = file_get_contents('clients.json');
-    // $clients = json_decode($data);
-    // foreach ($clients as $client) {
-    //     if ($client['account'] !== $accountNumber){   
-    //         return $accountNumber; 
-    //     }
-    //     else {
-    //     return randomAccount();
-    // }
-}
+    foreach ($clients as $client) {
+        if ($client->account === $accountNumber){   
+            return randomAccount();
+        }
+    }
+    return $accountNumber;    
+    }
 
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-if(!file_exists('clients.json')) {
-    $newClient[0] = [
-    'account' => randomAccount(),
-    'name' => $_POST['name'],
-    'surname' => $_POST['surname'],
-    'id' => $_POST['id'],
-    'remainder' => $_POST['remainder'] ?? 0,
-    ];
-    file_put_contents(__DIR__.'/clients.json', json_encode($newClient));
-}
-else {
-    $data = file_get_contents('clients.json');
-    $array_data = json_decode($data);
-    $newClient = [
+    if(!file_exists('clients.json')) {
+        $newClient[0] = [
         'account' => randomAccount(),
         'name' => $_POST['name'],
         'surname' => $_POST['surname'],
         'id' => $_POST['id'],
         'remainder' => $_POST['remainder'] ?? 0,
         ];
-    $array_data[] = $newClient;
-    file_put_contents(__DIR__.'/clients.json', json_encode($array_data));
+        file_put_contents(__DIR__.'/clients.json', json_encode($newClient));
+        $_SESSION['message'] = 'Sąskaita sukurta';
+        $_SESSION['msg_type'] = 'ok';
+        header('Location: http://localhost/namudarbai/bank/account_list.php');
+        die;
     }
-}
-$_SESSION['mesage'] = 'Sąskaita sukurta!';
-header('Location: http://localhost/namudarbai/bank/account_list.php')
+    else {
+        foreach ($clients as $client) {
+            if ($_POST['id'] === $client->id){ 
+                $_SESSION['message'] = 'Toks asmens kodas jau egzistuoja';
+                $_SESSION['msg_type'] = 'error';
+                header('Location: http://localhost/namudarbai/bank/new_account.php');
+                die;
+            }
+        }
+        $newClient = [
+        'account' => randomAccount(),
+        'name' => $_POST['name'],
+        'surname' => $_POST['surname'],
+        'id' => $_POST['id'],
+        'remainder' => $_POST['remainder'] ?? 0,
+        ];
+        $clients[] = $newClient;
+        file_put_contents(__DIR__.'/clients.json', json_encode($clients));
+        $_SESSION['message'] = 'Sąskaita sukurta';
+        $_SESSION['msg_type'] = 'ok';
+        header('Location: http://localhost/namudarbai/bank/account_list.php');
+        die;
+        }
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,14 +82,18 @@ header('Location: http://localhost/namudarbai/bank/account_list.php')
     <div class="wraper">
         <div class="navbar">
             <nav>
-                <button class="menu-button"><a href="./index.php">Į pradžią</a></button>
+                <button class="menu-button"><a href="./authorized.php">Į pradžia</a></button>
                 <button class="menu-button"><a href="./account_list.php">Sąskaitų sąrašas</a></button>
                 <button class="menu-button"><a href="./add_money.php">Pridėti lėšas</a></button>
                 <button class="menu-button"><a href="./deduct_money.php">Nuskaičiuoti lėšas</a></button>
                 <button class="menu-button"><a href="./login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>
+        <?php if ($msg): ?>
+        <div class="alert alert-<?= $msgType ?>" role="alert"><?= $msg ?></div>
+        <?php endif ?>
     <main class="new outer-box">
+
         <form action="" method="post">
             <div>
                 <label id="name">Vardas</label>
