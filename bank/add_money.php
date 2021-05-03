@@ -19,9 +19,9 @@ $clients = json_decode(file_get_contents(__DIR__.'/clients.json'));
     <div class="wraper">
         <div class="navbar">
             <nav>
-                <button class="menu-button"><a href="./authorized.php">Į pradžia</a></button>
-                <button class="menu-button"><a href="./account_list.php">Sąskaitų sąrašas</a></button>
-                <button class="menu-button"><a href="./new_account.php">Nauja sąskaita</a></button>
-                <button class="menu-button"><a href="./login.php?logaut">Atsijungti</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/authorized.php">Į pradžia</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/account_list.php">Sąskaitų sąrašas</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/new_account.php">Nauja sąskaita</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>

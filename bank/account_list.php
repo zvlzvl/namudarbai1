@@ -9,6 +9,7 @@ if (isset($_SESSION['message'])) {
 }
 
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +26,9 @@ if (isset($_SESSION['message'])) {
     <div class="wraper">
         <div class="navbar">
             <nav>
-                <button class="menu-button"><a href="./authorized.php">Į pradžia</a></button>
-                <button class="menu-button"><a href="./new_account.php">Nauja sąskaita</a></button>          
-                <button class="menu-button"><a href="./login.php?logaut">Atsijungti</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/authorized.php">Į pradžia</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/new_account.php">Nauja sąskaita</a></button>          
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>
         
@@ -59,9 +60,9 @@ if (isset($_SESSION['message'])) {
           <td><?= $client->surname?></td>
           <td><?= $client->id ?></td>
           <td><?= $client->remainder ?></td>
-          <td><button class="delete-button"><a href=".\add_money.php">pridėti</a></button></td>
-          <td><button class="delete-button"><a href=".\deduct_money.php">nuimti</a></button></td>
-          <td><button class="delete-button">Ištrinti</button></td>
+          <td><button class="delete-button"><a href="http://localhost/namudarbai/bank/add_money.php">pridėti</a></button></td>
+          <td><button class="delete-button"><a href="http://localhost/namudarbai/bank/deduct_money.php">nuimti</a></button></td>
+          <td><button class="delete-button" name="delete">Ištrinti</button></td>
         </tr>
         <?php endforeach ?>
   </table>

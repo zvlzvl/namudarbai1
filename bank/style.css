@@ -215,10 +215,10 @@ td:nth-of-type(6) {
 
 .accounts {
   text-shadow: 3px 3px 8px #515151, -3px -3px 8px #797979;
-    background: #656565;
-    color: #323232;
-    border: 10px;
-    font-size: 40px;
+  background: #656565;
+  color: #323232;
+  border: 10px;
+  font-size: 40px;
   width: auto;
   display: flex;
   flex-direction: row;

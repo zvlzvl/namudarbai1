@@ -82,11 +82,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="wraper">
         <div class="navbar">
             <nav>
-                <button class="menu-button"><a href="./authorized.php">Į pradžia</a></button>
-                <button class="menu-button"><a href="./account_list.php">Sąskaitų sąrašas</a></button>
-                <button class="menu-button"><a href="./add_money.php">Pridėti lėšas</a></button>
-                <button class="menu-button"><a href="./deduct_money.php">Nuskaičiuoti lėšas</a></button>
-                <button class="menu-button"><a href="./login.php?logaut">Atsijungti</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/authorized.php">Į pradžia</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/account_list.php">Sąskaitų sąrašas</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>
         <?php if ($msg): ?>
