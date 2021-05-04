@@ -65,8 +65,8 @@ function sortBySurname($a, $b) {
                     <td><?= $client['surname']?></td>
                     <td><?= $client['id'] ?></td>
                     <td><?= $client['remainder'] ?></td>
-                    <td><a href="http://localhost/namudarbai/bank/add_money.php?add=<?=$client['account']?>" class="btn delete-button" method="post">Pridėti</a>
-                    <td><a href="http://localhost/namudarbai/bank/deduct_money.php?deduct=<?=$client['account']?>" class="btn delete-button" method="post">Nuimti</a> 
+                    <td><button class="btn delete-button"><a href="http://localhost/namudarbai/bank/add_money.php?add=<?=$client['account']?>" method="post">Pridėti</a></button> 
+                    <td><button class="btn delete-button"><a href="http://localhost/namudarbai/bank/deduct_money.php?deduct=<?=$client['account']?>" method="post">Nuimti</a></button> 
                     <td>
                         <form action="http://localhost/namudarbai/bank/delete.php?clientACC=<?=$client['account']?>" method="post">
                             <input type="hidden" name="account" value="<?=$client['account']?>">
