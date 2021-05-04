@@ -8,6 +8,16 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message'], $_SESSION['msg_type']);
 }
 
+$arg = 48401200093;
+function idChecker($id) {
+    $pattern = '/[1-4][3-9][0-9](?:0[1-9]|1[012])((?:0[1-9])|(?:1[0-9])|(?:2[0-9])|(?:3[0-1]))[0-9][0-9][1-9][1-9]$/'; 
+return preg_match($pattern, $id) ? 'ok' : 'error';
+}
+
+
+
+echo idChecker($arg);
+
 //generate random account number not existing
 function randomAccount(){
     $bankNumber = "LT1212345";
@@ -28,6 +38,12 @@ function randomAccount(){
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!file_exists('clients.json')) {
+        if (idChecker($_POST['id']) == 'error') {
+            $_SESSION['message'] = 'Neteisingas asmens kodas';
+            $_SESSION['msg_type'] = 'error';
+            header('Location: http://localhost/namudarbai/bank/new_account.php');
+            die;
+        } else {
         $newClient[0] = [
         'account' => randomAccount(),
         'name' => $_POST['name'],
@@ -41,7 +57,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: http://localhost/namudarbai/bank/account_list.php');
         die;
     }
+    }
     else {
+        if (idChecker($_POST['id']) == 'error') {
+            $_SESSION['message'] = 'Neteisingas asmens kodas';
+            $_SESSION['msg_type'] = 'error';
+            header('Location: http://localhost/namudarbai/bank/new_account.php');
+            die;
+        } else {
         foreach ($clients as $client) {
             if ($_POST['id'] === $client['id']){ 
                 $_SESSION['message'] = 'Toks asmens kodas jau egzistuoja';
@@ -56,6 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 die;
             }
         }
+    }
         $newClient = [
         'account' => randomAccount(),
         'name' => $_POST['name'],
