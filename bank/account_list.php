@@ -12,6 +12,9 @@ $clients = json_decode(file_get_contents(__DIR__.'/clients.json'), 1);
     unset($_SESSION['message'], $_SESSION['msg_type']);
 }
 
+function sortBySurname($a, $b) {
+    return $a['surname'] <=> $b['surname'];
+  }
 
 
 ?>
@@ -57,7 +60,9 @@ $clients = json_decode(file_get_contents(__DIR__.'/clients.json'), 1);
         </tr>
 
         
-    <?php foreach($clients as $client) : ?>
+    <?php 
+    usort($clients, 'sortBySurname'); 
+    foreach($clients as $client) : ?>
         <tr class="table-content">
           <td><?= $client['account'] ?></td>
           <td><?= $client['name'] ?></td>
