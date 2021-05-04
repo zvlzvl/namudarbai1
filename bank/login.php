@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($_POST['name'] === $user['name']) {
             if (md5($_POST['psw']) === $user['psw']) {
                 $_SESSION['logged'] = 1;
-                $_SESSION['message'] = 'Jūs prisijungėte';
+                $_SESSION['message'] = 'Jūs sėkmingai prisijungėte!';
                 $_SESSION['msg_type'] = 'ok';
                 $_SESSION['name'] = $user['name'];
                 header('Location: http://localhost/namudarbai/bank/authorized.php');
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
-    $_SESSION['message'] = 'Neteisingas vardas sarba slaptažodis';
+    $_SESSION['message'] = 'Neteisingas vardas arba slaptažodi!';
     $_SESSION['msg_type'] = 'error';
     header('Location: http://localhost/namudarbai/bank/login.php');
     die;

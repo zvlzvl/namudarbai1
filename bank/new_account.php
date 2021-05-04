@@ -1,6 +1,6 @@
 <?php
 session_start();
-$clients = json_decode(file_get_contents(__DIR__.'/clients.json'));
+$clients = json_decode(file_get_contents(__DIR__.'/clients.json'), 1);
 $msg = '';
 if (isset($_SESSION['message'])) {
     $msg = $_SESSION['message'];
@@ -18,7 +18,7 @@ function randomAccount(){
     $accountNumber = $bankNumber.$randomNumber;
     return $accountNumber;
     foreach ($clients as $client) {
-        if ($client->account === $accountNumber){   
+        if ($client['account'] === $accountNumber){   
             return randomAccount();
         }
     }
@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else {
         foreach ($clients as $client) {
-            if ($_POST['id'] === $client->id){ 
+            if ($_POST['id'] === $client['id']){ 
                 $_SESSION['message'] = 'Toks asmens kodas jau egzistuoja';
                 $_SESSION['msg_type'] = 'error';
                 header('Location: http://localhost/namudarbai/bank/new_account.php');

@@ -1,5 +1,35 @@
 <?php
-require __DIR__.'/bootstrap.php';
+
+session_start();
+$clients = json_decode(file_get_contents(__DIR__.'/clients.json'), 1);
+$acc = $_GET['deduct'];
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    foreach($clients as $client => $value) {
+        if($value['account'] == $acc){
+            $val = $_POST['minus'];
+            if (($clients[$client]['remainder'] - $val) < 0) {
+                $_SESSION['message'] = "Nepakanka lėšų!";
+                $_SESSION['add'] = 0;
+                $_SESSION['msg_type'] = 'error';
+                header("Location: http://localhost/namudarbai/bank/account_list.php");
+                die;
+            }
+            else {
+                $fullName = $value['name'] . ' ' . $value['surname'];
+                $val = $_POST['minus'];
+                $clients[$client]['remainder'] -= $_POST['minus'];
+                $_SESSION['message'] = "Nuo $fullName sąskaitos nuskaičiuota $val eur!";
+                $_SESSION['add'] = 1;
+                $_SESSION['msg_type'] = 'ok';
+                file_put_contents(__DIR__.'/clients.json', json_encode($clients));
+                header('Location: http://localhost/namudarbai/bank/account_list.php');
+                die;
+            } 
+        }
+    }
+}
 
 
 ?>
@@ -11,7 +41,7 @@ require __DIR__.'/bootstrap.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Deduct money</title>
+    <title>Hello</title>
 </head>
 <body>
     <div class="wraper">
@@ -19,7 +49,21 @@ require __DIR__.'/bootstrap.php';
             <nav>
                 <button class="menu-button"><a href="http://localhost/namudarbai/bank/authorized.php">Į pradžia</a></button>
                 <button class="menu-button"><a href="http://localhost/namudarbai/bank/account_list.php">Sąskaitų sąrašas</a></button>
-                <button class="menu-button"><a href="http://localhost/namudarbai/bank/new_account.php">Nauja sąskaita</a></button>
+                <button class="menu-button"><a href="http://localhost/namudarbai/bank/new_account.php">Nauja sąskaita</a></button>          
                 <button class="menu-button"><a href="http://localhost/namudarbai/bank/login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>
+    </div>
+
+    <?php if ($msg): ?>
+        <div class="alert alert-<?= $msgType ?>" role="alert"><?= $msg ?></div>
+    <?php endif ?>
+    <main class="login outer-box">
+        <form action="" method="post">
+        <label for="quantity">Įrašykite norimą nuimti sumą:</label>
+        <input type="number" id="quantity" name="minus">
+            <button class="submit-button" type="submit">Nuskaičiuoti nuo sąskaitos</button>
+        </form>
+    </main>
+</body>
+</html>

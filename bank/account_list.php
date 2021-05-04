@@ -1,8 +1,12 @@
 <?php
 session_start();
-$clients = json_decode(file_get_contents(__DIR__.'/clients.json'));
-$msg = '';
-if (isset($_SESSION['message'])) {
+$clients = json_decode(file_get_contents(__DIR__.'/clients.json'), 1);
+
+ if (isset($_SESSION['delete'])) {
+    $msg = $_SESSION['message'];
+    $msgType = $_SESSION['msg_type'] == 'ok' ? 'success' : 'danger';
+    unset($_SESSION['message'], $_SESSION['msg_type']);
+} elseif (isset($_SESSION['add'])) {
     $msg = $_SESSION['message'];
     $msgType = $_SESSION['msg_type'] == 'ok' ? 'success' : 'danger';
     unset($_SESSION['message'], $_SESSION['msg_type']);
@@ -45,7 +49,7 @@ if (isset($_SESSION['message'])) {
         <tr class="table-header">
             <td>Sąskaitos numeris</td>
             <td>Vardas</td>
-            <td>Pavarde</td>
+            <td>Pavardė</td>
             <td>Asmens kodas</td>
             <td>Likutis</td>
             <td>Pridėti lėšų</td>
@@ -53,20 +57,24 @@ if (isset($_SESSION['message'])) {
         </tr>
 
         
-      <?php foreach($clients as $client) : ?>
+    <?php foreach($clients as $client) : ?>
         <tr class="table-content">
-          <td><?= $client->account ?></td>
-          <td><?= $client->name ?></td>
-          <td><?= $client->surname?></td>
-          <td><?= $client->id ?></td>
-          <td><?= $client->remainder ?></td>
-          <td><button class="delete-button"><a href="http://localhost/namudarbai/bank/add_money.php">pridėti</a></button></td>
-          <td><button class="delete-button"><a href="http://localhost/namudarbai/bank/deduct_money.php">nuimti</a></button></td>
-          <td><button class="delete-button" name="delete">Ištrinti</button></td>
+          <td><?= $client['account'] ?></td>
+          <td><?= $client['name'] ?></td>
+          <td><?= $client['surname']?></td>
+          <td><?= $client['id'] ?></td>
+          <td><?= $client['remainder'] ?></td>
+          <td><a href="http://localhost/namudarbai/bank/add_money.php?add=<?=$client['account']?>" class="btn delete-button" method="post">Pridėti</a>
+          <td><a href="http://localhost/namudarbai/bank/deduct_money.php?deduct=<?=$client['account']?>" class="btn delete-button" method="post">Nuimti</a> 
+          <td>
+            <form action="http://localhost/namudarbai/bank/delete.php?clientACC=<?=$client['account']?>" method="post">
+                <input type="hidden" name="account" value="<?=$client['account']?>">
+                <button type="submit" class="delete-button">Ištrinti</button>
+            </form>
+          </td>
         </tr>
-        <?php endforeach ?>
-  </table>
-</section>
+    <?php endforeach ?>
+    </table>
 
       </div>
       </body>

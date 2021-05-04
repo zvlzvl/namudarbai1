@@ -29,7 +29,7 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== 1) {
             <div class="alert alert-<?= $msgType ?>" role="alert"><?= $msg ?></div>
         <?php endif ?>
         <section class="inner-box">
-            <h1>Prisijunges vartotojas: <?= $_SESSION['name'] ?></h1>
+            <h1>Prisijungęs vartotojas: <?= $_SESSION['name'] ?></h1>
         </section>
    
     
