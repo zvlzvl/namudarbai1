@@ -53,17 +53,33 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <button class="menu-button"><a href="http://localhost/namudarbai/bank/login.php?logaut">Atsijungti</a></button>
             </nav>
         </div>
+        <main class="outer-box"> 
+            <table class="accountData inner-box">
+                <tr class="table-header">
+                    <td>Sąskaitos numeris</td>
+                    <td>Vardas</td>
+                    <td>Pavardė</td>
+                    <td>Asmens kodas</td>
+                    <td>Likutis</td>
+                </tr>
+                <?php foreach($clients as $client => $value)
+                    if ($value['account'] === $acc) : 
+                ?>
+                <tr class="table-content">
+                    <td><?= $value['account'] ?></td>
+                    <td><?= $value['name'] ?></td>
+                    <td><?= $value['surname']?></td>
+                    <td><?= $value['id'] ?></td>
+                    <td><?= $value['remainder'] ?></td>
+                </tr>
+                <?php endif ?>
+            </table>
+            <form action="" method="post">
+                <label for="quantity">Įrašykite norimą nuimti sumą:</label>
+                <input type="number" id="quantity" name="minus">
+                <button class="submit-button" type="submit">Nuskaičiuoti nuo sąskaitos</button>
+            </form>
+        </main>
     </div>
-
-    <?php if ($msg): ?>
-        <div class="alert alert-<?= $msgType ?>" role="alert"><?= $msg ?></div>
-    <?php endif ?>
-    <main class="login outer-box">
-        <form action="" method="post">
-        <label for="quantity">Įrašykite norimą nuimti sumą:</label>
-        <input type="number" id="quantity" name="minus">
-            <button class="submit-button" type="submit">Nuskaičiuoti nuo sąskaitos</button>
-        </form>
-    </main>
 </body>
 </html>

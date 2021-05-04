@@ -14,17 +14,16 @@ function randomAccount(){
     $randomNumber = null;
     for ($i=0; $i < 11; $i++) { 
         $randomNumber.= rand(0, 9);
-    }
+        }
     $accountNumber = $bankNumber.$randomNumber;
     return $accountNumber;
     foreach ($clients as $client) {
         if ($client['account'] === $accountNumber){   
             return randomAccount();
+            }
         }
-    }
     return $accountNumber;    
     }
-
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,6 +45,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         foreach ($clients as $client) {
             if ($_POST['id'] === $client['id']){ 
                 $_SESSION['message'] = 'Toks asmens kodas jau egzistuoja';
+                $_SESSION['msg_type'] = 'error';
+                header('Location: http://localhost/namudarbai/bank/new_account.php');
+                die;
+            }
+            else if ((strlen($_POST['name']) < 3) || (strlen($_POST['surname']) < 3) ){
+                $_SESSION['message'] = 'Vardas ir pavardė turi būti ne trumpesnis nei 3 simboliai';
                 $_SESSION['msg_type'] = 'error';
                 header('Location: http://localhost/namudarbai/bank/new_account.php');
                 die;
@@ -90,25 +95,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php if ($msg): ?>
         <div class="alert alert-<?= $msgType ?>" role="alert"><?= $msg ?></div>
         <?php endif ?>
-    <main class="new outer-box">
-
-        <form action="" method="post">
-            <div>
-                <label id="name">Vardas</label>
-                <input type="text" name="name" id="name" placeholder="Jūsų vardas" required>
-            </div>
-            <div>
-                <label id="surname">Pavardė</label>
-                <input type="text" name="surname" id="surname" placeholder="Jūsų pavardė" required>
-            </div>
-            <div>
-                <label id="id">Asmens kodas</label>
-                <input type="text" name="id" id="id" placeholder="Jūsų asmens kodas" required>
-            </div>
-            <button class="submit-button" type="submit">Suvesti</button>
-        </form>
-    </main>
-        
+        <main class="new outer-box">
+            <form action="" method="post">
+                <div>
+                    <label id="name">Vardas</label>
+                    <input type="text" name="name" id="name" placeholder="Jūsų vardas" required>
+                </div>
+                <div>
+                    <label id="surname">Pavardė</label>
+                    <input type="text" name="surname" id="surname" placeholder="Jūsų pavardė" required>
+                </div>
+                <div>
+                    <label id="id">Asmens kodas</label>
+                    <input type="text" name="id" id="id" placeholder="Jūsų asmens kodas" required>
+                </div>
+                <button class="submit-button" type="submit">Suvesti</button>
+             </form>
+        </main>
     </div>
 </body>
 </html>

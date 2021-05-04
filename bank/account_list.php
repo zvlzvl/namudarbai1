@@ -25,8 +25,6 @@ function sortBySurname($a, $b) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./layout.css">
-    <link rel="stylesheet" href="./table.css">
     <title>Account list</title>
 </head>
 <body>
@@ -44,43 +42,41 @@ function sortBySurname($a, $b) {
         <?php endif ?>
            
         <div class="accounts">
-                <h4>Sąskaitų sarašas</h4>
+            <h4>Sąskaitų sarašas</h4>
         </div>
 
-            <section class="inner-box">
-    <table>
-        <tr class="table-header">
-            <td>Sąskaitos numeris</td>
-            <td>Vardas</td>
-            <td>Pavardė</td>
-            <td>Asmens kodas</td>
-            <td>Likutis</td>
-            <td>Pridėti lėšų</td>
-            <td>Nuskaityti lėšas</td>
-        </tr>
-
-        
-    <?php 
-    usort($clients, 'sortBySurname'); 
-    foreach($clients as $client) : ?>
-        <tr class="table-content">
-          <td><?= $client['account'] ?></td>
-          <td><?= $client['name'] ?></td>
-          <td><?= $client['surname']?></td>
-          <td><?= $client['id'] ?></td>
-          <td><?= $client['remainder'] ?></td>
-          <td><a href="http://localhost/namudarbai/bank/add_money.php?add=<?=$client['account']?>" class="btn delete-button" method="post">Pridėti</a>
-          <td><a href="http://localhost/namudarbai/bank/deduct_money.php?deduct=<?=$client['account']?>" class="btn delete-button" method="post">Nuimti</a> 
-          <td>
-            <form action="http://localhost/namudarbai/bank/delete.php?clientACC=<?=$client['account']?>" method="post">
-                <input type="hidden" name="account" value="<?=$client['account']?>">
-                <button type="submit" class="delete-button">Ištrinti</button>
-            </form>
-          </td>
-        </tr>
-    <?php endforeach ?>
-    </table>
-
-      </div>
-      </body>
-      </head>
+        <section class="inner-box">
+            <table>
+                <tr class="table-header">
+                    <td>Sąskaitos numeris</td>
+                    <td>Vardas</td>
+                    <td>Pavardė</td>
+                    <td>Asmens kodas</td>
+                    <td>Likutis</td>
+                    <td>Pridėti lėšų</td>
+                    <td>Nuskaityti lėšas</td>
+                </tr>    
+                <?php 
+                usort($clients, 'sortBySurname'); 
+                foreach($clients as $client) : ?>
+                <tr class="table-content">
+                    <td><?= $client['account'] ?></td>
+                    <td><?= $client['name'] ?></td>
+                    <td><?= $client['surname']?></td>
+                    <td><?= $client['id'] ?></td>
+                    <td><?= $client['remainder'] ?></td>
+                    <td><a href="http://localhost/namudarbai/bank/add_money.php?add=<?=$client['account']?>" class="btn delete-button" method="post">Pridėti</a>
+                    <td><a href="http://localhost/namudarbai/bank/deduct_money.php?deduct=<?=$client['account']?>" class="btn delete-button" method="post">Nuimti</a> 
+                    <td>
+                        <form action="http://localhost/namudarbai/bank/delete.php?clientACC=<?=$client['account']?>" method="post">
+                            <input type="hidden" name="account" value="<?=$client['account']?>">
+                            <button type="submit" class="delete-button">Ištrinti</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php endforeach ?>
+            </table>
+        </section>
+    </div>
+</body>
+</head>

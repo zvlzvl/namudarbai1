@@ -1,6 +1,5 @@
 <?php
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +20,6 @@
         <section class="inner-box">
             <h1>Sveiki atvykę į banką</h1>
         </section>
-   
-    
-    
     </div>
 </body>
 </html>
