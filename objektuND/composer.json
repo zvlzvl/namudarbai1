@@ -1,0 +1,16 @@
+{
+    "name": "zivile/objektu-nd",
+    "authors": [
+        {
+            "name": "zvlzvl",
+            "email": "76951647+zvlzvl@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pin\\": "",
+            "": ""
+        }
+    },
+    "require": {}
+}
