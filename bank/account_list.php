@@ -5,11 +5,11 @@ $clients = json_decode(file_get_contents(__DIR__.'/clients.json'), 1);
  if (isset($_SESSION['delete'])) {
     $msg = $_SESSION['message'];
     $msgType = $_SESSION['msg_type'] == 'ok' ? 'success' : 'danger';
-    unset($_SESSION['message'], $_SESSION['msg_type']);
+    unset($_SESSION['delete'], $_SESSION['msg_type'], $_SESSION['message']);
 } elseif (isset($_SESSION['add'])) {
     $msg = $_SESSION['message'];
     $msgType = $_SESSION['msg_type'] == 'ok' ? 'success' : 'danger';
-    unset($_SESSION['message'], $_SESSION['msg_type']);
+    unset($_SESSION['add'], $_SESSION['msg_type'], $_SESSION['message']);
 }
 
 function sortBySurname($a, $b) {

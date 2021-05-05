@@ -16,6 +16,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 header("Location: http://localhost/namudarbai/bank/account_list.php");
                 die;
             }
+            elseif ($val <= 0) {
+                $_SESSION['message'] = "Nuo sąskaitos nieko nenuimta!";
+                $_SESSION['add'] = 0;
+                $_SESSION['msg_type'] = 'error';
+                header("Location: http://localhost/namudarbai/bank/account_list.php");
+                die;
+            }
             else {
                 $fullName = $value['name'] . ' ' . $value['surname'];
                 $val = $_POST['minus'];

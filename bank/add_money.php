@@ -73,7 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             <form action="" method="post">
                 <label for="quantity" >Įrašykite norimą pridėti sumą:</label>
-                <input type="number" id="quantity" name="plus" min="0">
+                <input type="number" id="quantity" name="plus">
                 <button class="submit-button" type="submit">Papildyti sąskaitą</button>
             </form>
         </main>
