@@ -4,11 +4,11 @@ namespace Pin;
 
 
 class Krepsys {
-public $talpa = 500;
+public $talpa;
 public $ideta = 0;
 
-public function __construct() {
-    $this->talpa;
+public function __construct($talpa) {
+    $this->talpa=$talpa;
 }
 public function eitiGrybauti() {
     $i=0;
@@ -19,8 +19,8 @@ public function eitiGrybauti() {
         echo'<br>';
         $i++;
 
-    if($gryb->getValgomas() == 'true' && $gryb->getSukirmijes() == 'false'){
-            $this->ideta += $gryb->getSvoris();
+    if($gryb->valgomas == true && $gryb->sukirmijes == false){
+            $this->ideta += $gryb->svoris;
             echo '<h2 style="color: green;">'.$this->ideta.'</h2>';
         }
     } while ($this->ideta <= $this->talpa);

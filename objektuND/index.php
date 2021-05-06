@@ -35,9 +35,9 @@ echo $bebroStikline->getKiekis();
 
 echo '<br>----------3-----------<br>';
 
-$naujasKrepsys = new Krepsys();
+$grybauti = new Krepsys(500);
 
-$naujasKrepsys->eitiGrybauti();
+$grybauti->eitiGrybauti();
 
 echo '<br>----------4-----------<br>';
 
