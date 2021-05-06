@@ -6,11 +6,7 @@ class Pinigine {
     private $popieriniaiPinigai = [];
     private $metaliniaiPinigai = [];
 
-public function __construct(){
-    
-    $this->popieriniaiPinigai;
-    $this->metaliniaiPinigai;
-}
+
 public function ideti($kiekis){
     if ($kiekis <= 2) {
         array_push($this->metaliniaiPinigai, $kiekis);
@@ -29,13 +25,5 @@ public function skaiciuoti(){
         $sumaMet += $value;
     }
     echo "Popierinių pinigų suma: $sumaPop, o metalinių suma: $sumaMet";
-}
-
-public function getMetaliniaiPinigai(){
-    return $this->metaliniaiPinigai;
-    }
-
-public function getPopieriniaiPinigai(){
-    return $this->popieriniaiPinigai;
     }
 }
