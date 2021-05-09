@@ -16,15 +16,41 @@ class Builder extends ConstructionCompany {
             }
         $this->bname = $bname;
 
-        $skills = '';
+        $skills = [];
         $AllSkills = ['electrician', 'plumber', 'tractor', 'driver', 'engineer'];
-        $skills = $AllSkills[rand(0, 4)];    
+        array_push($skills, $AllSkills[rand(0, 4)]);    
          
        $this->skills = $skills;
     }
 
     public function printInfo() {
-        echo "Company name: $this->name <br> Employees: $this->employees <br> Turnover: $this->turnover <br> Company building objects: ".implode(', ', $this->buildingObjects)." <br> Builder: $this->bname <br> Skills: $this->skills.";
+        echo "Company name: $this->name <br> Employees: $this->employees <br> Turnover: $this->turnover <br> Company building objects: ".implode(', ', $this->buildingObjects)." <br> Builder name: $this->bname <br> Skills: ".implode(', ', $this->skills);
+    }
+    public function addSkill($skill){
+        if ($this->employees === 0 &&
+        $this->turnover === 0 &&
+        $this->buildingObjects ===[] &&
+        $this->skills ===[] &&
+        $this->bname ==='') {
+           echo "Company $this->name is bankrupt.";
+        } 
+        else {
+            foreach($this->skills as $value){
+                if ($value !== $skill){
+                array_push($this->skills, $skill);
+                }
+            }
+        }
+    }
+
+    public function bankrupt(){
+        echo "$this->name is bankrupt. $this->employees employees are now unemployed.<br>";
+        $this->employees = 0;
+        $this->turnover = 0;
+        $this->buildingObjects =[];
+        $this->skills =[];
+        $this->bname ='';
+        Builder::printInfo();
     }
 
 }
