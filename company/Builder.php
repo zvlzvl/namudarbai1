@@ -50,7 +50,7 @@ class Builder extends ConstructionCompany {
         $this->buildingObjects =[];
         $this->skills =[];
         $this->bname ='';
-        Builder::printInfo();
+        self::printInfo();
     }
 
 }

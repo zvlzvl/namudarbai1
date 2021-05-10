@@ -50,6 +50,6 @@ use Zivile\MarsoPalydovas;
 // $kibirasNePo1->kiekPririnktaAkmenu();
 
 
-// $zveris = new Zveris('Vilkas');
-// $zveris->papasakok();
+$zveris = new Zveris('Vilkas');
+$zveris->papasakok();
 

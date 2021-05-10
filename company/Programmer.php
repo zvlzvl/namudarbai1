@@ -56,7 +56,7 @@ class Programmer extends SoftwareCompany {
             $this->programingLanguages =[];
             $this->skills =[];
             $this->pname ='';
-            Programmer::printInfo();
+            self::printInfo();
             }
         }
     
