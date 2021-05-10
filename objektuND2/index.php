@@ -10,48 +10,48 @@ use Zivile\Miskas;
 use Zivile\Zveris;
 use Zivile\MarsoPalydovas;
 
-// // $kibiras = new Kibiras1();
+$kibiras = new Kibiras1();
 
-// // $kibiras->prideti1Akmeni();
-// // echo '<br>-------<br>';
-// // $kibiras->kiekPririnktaAkmenu();
-// // echo '<br>-------<br>';
-// // $kibiras->pridetiDaugAkmenu(10);
-// // echo '<br>-------<br>';
-// // $kibiras->kiekPririnktaAkmenu();
-// // echo '<br>-------<br>';
-
-
-// // $kibiras1 = new Kibiras2();
-// // $kibiras2 = new Kibiras2();
-// // $kibiras3 = new Kibiras2();
-// // $kibiras1-> pridetiDaugAkmenu(10);
-// // $kibiras2-> pridetiDaugAkmenu(20);
-// // $kibiras3-> pridetiDaugAkmenu(8);
-
-// // $kibiras1->kiekPririnktaAkmenu();
-// // echo '<br>-------<br>';
-// // $kibiras2->kiekPririnktaAkmenu();
-// // echo '<br>-------<br>';
-// // $kibiras3->kiekPririnktaAkmenu();
-// // echo '<br>-------<br>';
-
-// // echo $kibiras3->getAkmenuKiekisVisuoseKibiruose();
-
-// $kibirasNePo1 = new Kibiriukas();
+$kibiras->prideti1Akmeni();
+echo '<br>-------<br>';
+$kibiras->kiekPririnktaAkmenu();
+echo '<br>-------<br>';
+$kibiras->pridetiDaugAkmenu(10);
+echo '<br>-------<br>';
+$kibiras->kiekPririnktaAkmenu();
+echo '<br>-------<br>';
 
 
-// $kibirasNePo1->pridetiDaugAkmenu(10);
-// echo '<br>-------<br>';
-// $kibirasNePo1->kiekPririnktaAkmenu();
-// echo '<br>-------<br>';
-// $kibirasNePo1->prideti1Akmeni();
-// echo '<br>-------<br>';
-// $kibirasNePo1->kiekPririnktaAkmenu();
+$kibiras1 = new Kibiras2();
+$kibiras2 = new Kibiras2();
+$kibiras3 = new Kibiras2();
+$kibiras1-> pridetiDaugAkmenu(10);
+$kibiras2-> pridetiDaugAkmenu(20);
+$kibiras3-> pridetiDaugAkmenu(8);
+
+$kibiras1->kiekPririnktaAkmenu();
+echo '<br>-------<br>';
+$kibiras2->kiekPririnktaAkmenu();
+echo '<br>-------<br>';
+$kibiras3->kiekPririnktaAkmenu();
+echo '<br>-------<br>';
+
+echo $kibiras3->getAkmenuKiekisVisuoseKibiruose();
+
+$kibirasNePo1 = new Kibiriukas();
 
 
-// $zveris = new Zveris('Vilkas');
-// $zveris->papasakok();
+$kibirasNePo1->pridetiDaugAkmenu(10);
+echo '<br>-------<br>';
+$kibirasNePo1->kiekPririnktaAkmenu();
+echo '<br>-------<br>';
+$kibirasNePo1->prideti1Akmeni();
+echo '<br>-------<br>';
+$kibirasNePo1->kiekPririnktaAkmenu();
+
+
+$zveris = new Zveris('Vilkas');
+$zveris->papasakok();
 
 
 $p1 = MarsoPalydovas::duotiPalydova();
