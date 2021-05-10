@@ -50,6 +50,20 @@ use Zivile\MarsoPalydovas;
 // $kibirasNePo1->kiekPririnktaAkmenu();
 
 
-$zveris = new Zveris('Vilkas');
-$zveris->papasakok();
+// $zveris = new Zveris('Vilkas');
+// $zveris->papasakok();
 
+
+$p1 = MarsoPalydovas::duotiPalydova();
+$p2 = MarsoPalydovas::duotiPalydova();
+$p3 = MarsoPalydovas::duotiPalydova();
+$p4 = MarsoPalydovas::duotiPalydova();
+$p5 = MarsoPalydovas::duotiPalydova();
+
+
+echo '<pre>';
+var_dump($p1);
+var_dump($p2);
+var_dump($p3);
+var_dump($p4);
+var_dump($p5);
